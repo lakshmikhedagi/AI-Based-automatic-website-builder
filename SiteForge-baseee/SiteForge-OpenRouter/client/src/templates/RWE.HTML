@@ -1,0 +1,334 @@
+Rural Women Entrepreneurs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>EmpowerHer Rural Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#f6f7fb;}
+    .navbar {position:sticky;top:0;z-index:99;background:#367539;color:#fff;}
+    .nav-container {max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;}
+    .nav-logo {font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;}
+    .nav-menu {display:flex;gap:1.2rem;}
+    .nav-link {color:#fff;text-decoration:none;padding:0.65rem 1.05rem;border-radius:4px;}
+    .nav-link.active,.nav-link:hover {background:#66a34a;}
+    .nav-toggle {display:none;flex-direction:column;cursor:pointer;}
+    .bar {width:24px;height:4px;margin:3px 0;background:#fff;}
+    .page {display:none;max-width:1100px;margin:auto;padding:1.5rem;}
+    .page.active {display:block;}
+    .hero {display:flex;flex-wrap:wrap;align-items:center;gap:2rem;background:#dbeee3;border-radius:8px;padding:2.5rem 1rem;margin-bottom:2rem;}
+    .hero-content {flex:1 1 320px;}
+    .hero-content h1{color:#367539;font-size:2.5rem;}
+    .hero-image img {width:340px;border-radius:8px;box-shadow:0 0 12px #aaa;}
+    .btn {padding:0.7rem 1.3rem;font-size:1rem;border:none;border-radius:4px;cursor:pointer;margin-right:1rem;text-decoration:none;}
+    .btn-primary {background:#367539;color:#fff;}
+    .btn-secondary {background:#e7ae22;color:#fff;}
+    .intro-stats {display:flex;justify-content:center;gap:2rem;margin:2rem 0 1rem;flex-wrap:wrap;}
+    .intro-stat-item {background:#fff;border-radius:8px;box-shadow:0 2px 8px #e0eecd;text-align:center;flex:1 1 220px;padding:1.2rem;min-width:160px;}
+    .intro-stat-number {font-size:1.7rem;font-weight:700;margin-bottom:0.45rem;}
+    .products-section {margin:2.5rem 0 1rem;}
+    .filters-bar {margin-bottom:1rem;display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .filter-tag {background:#66a34a;color:#fff;border:0;border-radius:16px;padding:0.40rem 1rem;cursor:pointer;transition:background 0.15s;}
+    .filter-tag.active {background:#367539;}
+    .product-grid {display:flex;flex-wrap:wrap;gap:1.4rem;}
+    .product-card {background:#fff;border-radius:8px;box-shadow:0 2px 8px #e0eecd;max-width:260px;overflow:hidden;flex:1 1 230px;}
+    .product-card img {width:100%;height:130px;object-fit:cover;}
+    .product-content {padding:0.9rem;}
+    .product-title {font-weight:600;font-size:1.2rem;}
+    .product-category {font-size:0.97rem;color:#367539;}
+    .product-price {font-weight:500;margin-top:0.8rem;}
+    .product-contact {margin-top:1rem;}
+    .entrepreneurs-section {margin:2rem 0;}
+    .entrepreneur-grid {display:flex;flex-wrap:wrap;gap:1.2rem;}
+    .entrepreneur-card {background:#fff;border-radius:8px;box-shadow:0 2px 8px #e0eecd;max-width:300px;overflow:hidden;flex:1 1 270px;}
+    .entrepreneur-image img{width:100%;height:105px;object-fit:cover;}
+    .entrepreneur-content {padding:0.8rem;}
+    .entrepreneur-name {font-weight:bold;font-size:1.17rem;color:#367539;}
+    .entrepreneur-bio {margin:0.5rem 0 0.7rem 0;}
+    .gallery-section {margin:2rem 0;}
+    .gallery-grid {display:flex;gap:1rem;flex-wrap:wrap;}
+    .gallery-img img{width:220px;border-radius:10px;box-shadow:0 2px 8px #e0eecd;object-fit:cover;}
+    .contact-section{margin:2.5rem 0;}
+    .contact-content{background:#dbeee3;border-radius:8px;padding:2.2rem 1.1rem;}
+    .contact-info {margin-bottom:2rem;}
+    .contact-form{background:#fff;border-radius:8px;box-shadow:0 2px 8px #e0eecd;padding:1.2rem;}
+    .form-row{display:flex;gap:1rem;}
+    .form-group{margin-bottom:0.9rem;}
+    .form-group label{font-weight:500;}
+    .footer {background:#367539;color:#eee;margin-top:2.2rem;padding:2rem 0 1rem;}
+    .footer-content {display:flex;gap:2.4rem;flex-wrap:wrap;max-width:1100px;margin:auto;}
+    .footer-section {flex:1 1 220px;}
+    .footer-bottom {text-align:center;margin-top:1.3rem;}
+    .social-links a{color:#f6f6f6;margin-right:0.6rem;font-size:1.2rem;}
+    @media (max-width:900px) { .nav-container,.page {max-width:98vw;} }
+    @media (max-width:700px) {.hero,.intro-stats,.product-grid,.entrepreneur-grid,.gallery-grid,.footer-content{flex-direction:column;}
+      .hero-image img{width:99vw;max-width:340px;}.navbar .nav-menu{flex-direction:column;position:absolute;top:57px;right:0;background:#367539;width:100vw;display:none;}
+      .navbar .nav-menu.open{display:flex;}.nav-toggle{display:flex;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo"><i class="fas fa-leaf"></i> EmpowerHer</div>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#" class="nav-link active" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="products">Products</a>
+        <a href="#" class="nav-link" data-page="entrepreneurs">Entrepreneurs</a>
+        <a href="#" class="nav-link" data-page="gallery">Gallery</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div class="page active" id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Empowering Rural Women Entrepreneurs</h1>
+        <p>Discover handmade and farm-fresh products from talented rural women – supporting communities and sustainable livelihoods.</p>
+        <div>
+          <a href="#" class="btn btn-primary" data-page="products">Shop Products</a>
+          <a href="#" class="btn btn-secondary" data-page="entrepreneurs">Their Stories</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Rural women entrepreneurs">
+      </div>
+    </section>
+    <div class="intro-stats">
+      <div class="intro-stat-item"><i class="fas fa-users"></i>
+        <div class="intro-stat-number" data-target="87">0</div>
+        <div>Entrepreneurs</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-box"></i>
+        <div class="intro-stat-number" data-target="192">0</div>
+        <div>Products Listed</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-tree"></i>
+        <div class="intro-stat-number" data-target="17">0</div>
+        <div>States Served</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-hands-helping"></i>
+        <div class="intro-stat-number" data-target="3200">0</div>
+        <div>Families Supported</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Page -->
+  <div class="page" id="products">
+    <section class="products-section">
+      <h2>Our Products</h2>
+      <div class="filters-bar" id="product-filters">
+        <button class="filter-tag active" data-filter="all">All</button>
+        <button class="filter-tag" data-filter="Handicrafts">Handicrafts</button>
+        <button class="filter-tag" data-filter="Textiles">Textiles</button>
+        <button class="filter-tag" data-filter="Food">Food</button>
+        <button class="filter-tag" data-filter="Wellness">Wellness</button>
+      </div>
+      <div class="product-grid" id="product-grid">
+        <!-- Product cards will be rendered by JavaScript -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Entrepreneurs Page -->
+  <div class="page" id="entrepreneurs">
+    <section class="entrepreneurs-section">
+      <h2>Entrepreneur Stories</h2>
+      <p>Read about the inspiring journeys of women changemakers across rural India.</p>
+      <div class="entrepreneur-grid">
+        <div class="entrepreneur-card">
+          <div class="entrepreneur-image">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Entrepreneur 1">
+          </div>
+          <div class="entrepreneur-content">
+            <div class="entrepreneur-name">Radha Kumari</div>
+            <div class="entrepreneur-bio">After learning weaving from her grandmother, Radha began making eco-friendly baskets. Her village now exports crafts across the country.</div>
+            <div class="entrepreneur-location"><i class="fas fa-map-marker-alt"></i> Odisha</div>
+            <div class="entrepreneur-story">“My art keeps our tradition alive and supports my family’s dreams.”</div>
+          </div>
+        </div>
+        <div class="entrepreneur-card">
+          <div class="entrepreneur-image">
+            <img src="https://images.unsplash.com/photo-1498550744920-e1217690f94b?auto=format&fit=crop&w=700&q=80" alt="Entrepreneur 2">
+          </div>
+          <div class="entrepreneur-content">
+            <div class="entrepreneur-name">Sangeeta Patel</div>
+            <div class="entrepreneur-bio">Sangeeta harnessed organic farming practices to create high-quality pickles, jams and spices, delighting customers nationwide.</div>
+            <div class="entrepreneur-location"><i class="fas fa-map-marker-alt"></i> Gujarat</div>
+            <div class="entrepreneur-story">“Every jar is a taste of my land and hard work.”</div>
+          </div>
+        </div>
+        <div class="entrepreneur-card">
+          <div class="entrepreneur-image">
+            <img src="https://images.unsplash.com/photo-1536763225213-3c536c8ab20c?auto=format&fit=crop&w=700&q=80" alt="Entrepreneur 3">
+          </div>
+          <div class="entrepreneur-content">
+            <div class="entrepreneur-name">Amina Bano</div>
+            <div class="entrepreneur-bio">Amina designs vibrant block-printed fabrics, training local youth and expanding her business regionally.</div>
+            <div class="entrepreneur-location"><i class="fas fa-map-marker-alt"></i> Rajasthan</div>
+            <div class="entrepreneur-story">“My shop is a center for learning and creativity.”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Gallery Page -->
+  <div class="page" id="gallery">
+    <section class="gallery-section">
+      <h2>Gallery</h2>
+      <p>View rural landscapes and women at work, celebrating empowerment and craftsmanship.</p>
+      <div class="gallery-grid">
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80" alt="Landscape"></div>
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=700&q=80" alt="Handmade"></div>
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1549887534-187221358c74?auto=format&fit=crop&w=700&q=80" alt="Rural Market"></div>
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=700&q=80" alt="Women at Work"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact Page -->
+  <div class="page" id="contact">
+    <section class="contact-section">
+      <div class="contact-content">
+        <h2>Contact & Inquiry</h2>
+        <div class="contact-info">
+          <p>Interested in products or collaborations? Get in touch with EmpowerHer Marketplace:</p>
+          <ul>
+            <li>Email: info@empowerhermarket.org</li>
+            <li>Phone: +91 98765 43210</li>
+            <li>Address: 77 Village Lane, Rural India, 400001</li>
+          </ul>
+        </div>
+        <form id="contact-form" class="contact-form">
+          <div class="form-row">
+            <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+            <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+          </div>
+          <div class="form-group"><label>Subject</label><input type="text" name="subject" required></div>
+          <div class="form-group"><label>Message</label><textarea name="message" rows="5" required></textarea></div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div id="contact-success" style="display:none;color:green;margin-top:1rem;"></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>EmpowerHer</h3>
+        <p>Supporting rural women and sustainable products across India.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" data-page="products">Products</a></li>
+          <li><a href="#" data-page="entrepreneurs">Entrepreneurs</a></li>
+          <li><a href="#" data-page="gallery">Gallery</a></li>
+          <li><a href="#" data-page="contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: info@empowerhermarket.org</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Address: 77 Village Lane, Rural India, 400001</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 EmpowerHer Marketplace. All rights reserved.</p></div>
+  </footer>
+  <script>
+    // Responsive navbar toggle
+    document.getElementById('nav-toggle').onclick = function() {
+      document.getElementById('nav-menu').classList.toggle('open');
+    };
+    // Single Page Navigation
+    function showPage(page) {
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+      document.querySelectorAll('.nav-link[data-page="'+page+'"]').forEach(l=>l.classList.add('active'));
+      document.getElementById('nav-menu').classList.remove('open');
+      window.scrollTo(0,0);
+    }
+    // Nav menu and footer links
+    document.querySelectorAll('[data-page]').forEach(function(elem){
+      elem.addEventListener('click',function(e){
+        e.preventDefault();
+        showPage(this.getAttribute('data-page'));
+      });
+    });
+    // Home stats animation
+    function animateStats(selector){document.querySelectorAll(selector).forEach(function(el){
+      let target=+el.getAttribute('data-target'),num=0,step=Math.max(1,Math.ceil(target/50));
+      function animate(){num+=step;if(num>=target){num=target;}
+        el.textContent=num.toLocaleString();
+        if(num<target){setTimeout(animate,24);}
+      } animate(); });}
+    animateStats('.intro-stat-number');
+    // Dynamic product rendering + filter
+    const products = [
+      {title:'Handwoven Basket',category:'Handicrafts',price:'₹350',img:'https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=400&q=80',contact:'Radha Kumari'},
+      {title:'Organic Pickle',category:'Food',price:'₹120',img:'https://images.unsplash.com/photo-1519864645-21d1b6c3c2b3?auto=format&fit=crop&w=400&q=80',contact:'Sangeeta Patel'},
+      {title:'Block Printed Dupatta',category:'Textiles',price:'₹490',img:'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80',contact:'Amina Bano'},
+      {title:'Millet Energy Bars',category:'Food',price:'₹60',img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',contact:'Sangeeta Patel'},
+      {title:'Clay Water Jug',category:'Handicrafts',price:'₹220',img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80',contact:'Radha Kumari'},
+      {title:'Herbal Soap',category:'Wellness',price:'₹65',img:'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80',contact:'Amina Bano'},
+      {title:'Bamboo Mat',category:'Handicrafts',price:'₹180',img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80',contact:'Radha Kumari'},
+      {title:'Lentil Papad',category:'Food',price:'₹50',img:'https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?auto=format&fit=crop&w=400&q=80',contact:'Sangeeta Patel'},
+      {title:'Ayurvedic Face Pack',category:'Wellness',price:'₹90',img:'https://images.unsplash.com/photo-1465101178521-c5249f4df085?auto=format&fit=crop&w=400&q=80',contact:'Amina Bano'},
+      {title:'Embroidered Shawl',category:'Textiles',price:'₹899',img:'https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=400&q=80',contact:'Amina Bano'},
+    ];
+    function renderProducts(filter) {
+      let grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      let filtered = filter === 'all' ? products : products.filter(p=>p.category===filter);
+      if (filtered.length === 0) grid.innerHTML = '<p>No products found for this filter.</p>';
+      filtered.forEach(p=>{
+        let card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `<img src="${p.img}" alt="${p.title}">
+          <div class="product-content">
+            <div class="product-title">${p.title}</div>
+            <div class="product-category">${p.category}</div>
+            <div class="product-price">${p.price}</div>
+            <div class="product-contact">By <b>${p.contact}</b></div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+    renderProducts('all');
+    document.querySelectorAll('.filter-tag').forEach(f=>{
+      f.addEventListener('click',function(){
+        document.querySelectorAll('.filter-tag').forEach(f2=>f2.classList.remove('active'));
+        this.classList.add('active');
+        renderProducts(this.getAttribute('data-filter'));
+      });
+    });
+    // Contact Form Submission
+    document.getElementById('contact-form').onsubmit=function(e){
+      e.preventDefault();
+      document.getElementById('contact-success').style.display="block";
+      document.getElementById('contact-success').textContent="Your message was sent!";
+      this.reset();
+      setTimeout(function(){document.getElementById('contact-success').style.display="none";},3300);
+    };
+  </script>
+</body>
+</html>
+

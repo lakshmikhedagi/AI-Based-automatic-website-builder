@@ -1,0 +1,287 @@
+Youth Empowerment Workshops
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Youth Empowerment Workshops</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: #f7f9fb;
+      color: #223;
+    }
+    nav {
+      background: #205072;
+      padding: 0.5em 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 700;
+      transition: color 0.2s;
+      font-size: 1.15em;
+    }
+    nav a.active, nav a:hover {
+      color: #ffd543;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 2em;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(32,80,114,0.10);
+    }
+    h1, h2, h3 {
+      color: #205072;
+    }
+    .unsplash-img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(32,80,114,0.08);
+      margin-top: 1em;
+      margin-bottom: 1em;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .agenda-list, .stories-list {
+      padding-left: 0;
+      list-style: none;
+    }
+    .agenda-item, .story-item {
+      background: #f0f5fa;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .container { padding: 1em; }
+      nav {flex-direction: column;}
+      nav a {margin: 0.5em 0;}
+    }
+    /* Forms */
+    form label {
+      display: block;
+      margin-top: 0.75em;
+      font-weight: 600;
+    }
+    form input, form textarea, form select {
+      width: 100%;
+      padding: .75em;
+      margin-top: 0.5em;
+      border: 1px solid #ccd6e0;
+      border-radius: 6px;
+      font-size: 1em;
+      background: #f7f9fb;
+    }
+    form button {
+      margin-top: 1.5em;
+      padding: 0.75em 1.5em;
+      background: #205072;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    form button:hover {
+      background: #329d9c;
+    }
+    .hidden {
+      display: none;
+    }
+    .success-message {
+      color: #329d9c;
+      font-weight: bold;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="active" data-page="home">Home</a>
+    <a href="#" data-page="agenda">Workshop Agendas</a>
+    <a href="#" data-page="stories">Participant Stories</a>
+    <a href="#" data-page="register">Registration</a>
+    <a href="#" data-page="feedback">Feedback</a>
+  </nav>
+  <!-- Page Containers -->
+  <div class="container" id="page-home">
+    <h1>Youth Empowerment Workshops</h1>
+    <p>
+      Empowering young minds through interactive workshops, inspiring speakers, and community connection. Join us in building confidence, leadership skills, and lifelong friendships!
+    </p>
+    <img class="unsplash-img" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80"
+      alt="Empowered youths in activities">
+    <h2>Upcoming Events</h2>
+    <ul>
+      <li>Self-Discovery Retreat - Nov 15, 2025</li>
+      <li>Leadership Bootcamp - Dec 2, 2025</li>
+      <li>Community Connect Festival - Jan 10, 2026</li>
+    </ul>
+  </div>
+  <div class="container hidden" id="page-agenda">
+    <h1>Workshop Agendas</h1>
+    <img class="unsplash-img" src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80"
+      alt="Youth workshop group">
+    <ul class="agenda-list">
+      <li class="agenda-item">
+        <h3>Self-Discovery Retreat</h3>
+        <ul>
+          <li>09:00 - Icebreakers & Introduction</li>
+          <li>10:00 - Personal Strength Mapping</li>
+          <li>11:30 - Mindfulness Activities</li>
+          <li>13:00 - Lunch Break</li>
+          <li>14:00 - Sharing Your Story</li>
+          <li>16:00 - Closing Circle</li>
+        </ul>
+      </li>
+      <li class="agenda-item">
+        <h3>Leadership Bootcamp</h3>
+        <ul>
+          <li>09:00 - Leadership Lessons</li>
+          <li>10:30 - Building Team Skills</li>
+          <li>12:00 - Group Challenge</li>
+          <li>13:00 - Lunch Break</li>
+          <li>14:00 - Role Play Scenarios</li>
+          <li>16:30 - Team Presentations</li>
+        </ul>
+      </li>
+      <li class="agenda-item">
+        <h3>Community Connect Festival</h3>
+        <ul>
+          <li>10:00 - Welcome & Networking</li>
+          <li>11:00 - Youth-led Talks</li>
+          <li>13:00 - Community Service Project</li>
+          <li>15:00 - Celebration & Awards</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="container hidden" id="page-stories">
+    <h1>Participant Stories</h1>
+    <img class="unsplash-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80"
+      alt="Youth expressing joy">
+    <div class="stories-list">
+      <div class="story-item">
+        <h3>Anjali's Journey</h3>
+        <p>
+          “Before joining, I was shy and nervous about speaking up. The retreat helped me discover my strengths and make friends who listen and care. Now, I am leading my school’s student council!”
+        </p>
+      </div>
+      <div class="story-item">
+        <h3>Ravi’s Transformation</h3>
+        <p>
+          “I never thought leadership was for me. The Bootcamp showed me the power of teamwork and gave me courage to start my own club. I love motivating others now!”
+        </p>
+      </div>
+      <div class="story-item">
+        <h3>Priya’s Impact</h3>
+        <p>
+          “At the festival, I spoke about mental health and received so much support. Seeing our community join hands made me feel like I matter.”
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container hidden" id="page-register">
+    <h1>Workshop Registration</h1>
+    <img class="unsplash-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+      alt="Youth teamwork">
+    <form id="registerForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email ID:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="event">Select Workshop:</label>
+      <select id="event" name="event" required>
+        <option value="">-- Please Choose --</option>
+        <option>Self-Discovery Retreat</option>
+        <option>Leadership Bootcamp</option>
+        <option>Community Connect Festival</option>
+      </select>
+      <button type="submit">Register</button>
+    </form>
+    <div class="success-message hidden" id="registerSuccess">
+      Registration successful! We'll be in touch soon.
+    </div>
+  </div>
+  <div class="container hidden" id="page-feedback">
+    <h1>Your Feedback</h1>
+    <img class="unsplash-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+      alt="Youth sharing feedback">
+    <form id="feedbackForm">
+      <label for="fname">Name (optional):</label>
+      <input type="text" id="fname" name="fname">
+      <label for="fworkshop">Which workshop did you attend?</label>
+      <select id="fworkshop" name="fworkshop">
+        <option value="">-- Select --</option>
+        <option>Self-Discovery Retreat</option>
+        <option>Leadership Bootcamp</option>
+        <option>Community Connect Festival</option>
+      </select>
+      <label for="feedback">Your feedback:</label>
+      <textarea id="feedback" name="feedback" rows="4" required></textarea>
+      <label>Would you recommend us?</label>
+      <input type="radio" id="yes" name="recommend" value="Yes"><label for="yes">Yes</label>
+      <input type="radio" id="no" name="recommend" value="No"><label for="no">No</label>
+      <button type="submit">Submit Feedback</button>
+    </form>
+    <div class="success-message hidden" id="feedbackSuccess">
+      Thank you for your feedback!
+    </div>
+  </div>
+  <!-- Main JS for Navigation and Forms -->
+  <script>
+    // Simple page routing
+    const navLinks = document.querySelectorAll('nav a');
+    const pages = [
+      "home", "agenda", "stories", "register", "feedback"
+    ];
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        // Highlight active link
+        navLinks.forEach(l => l.classList.remove('active'))
+        link.classList.add('active');
+        // Show correct page
+        pages.forEach(page => {
+          document.getElementById('page-' + page).classList.add('hidden');
+        });
+        document.getElementById('page-' + link.getAttribute('data-page')).classList.remove('hidden');
+        window.scrollTo(0,0);
+      });
+    });
+
+    // Simple registration form handler
+    document.getElementById('registerForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('registerSuccess').classList.remove('hidden');
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('registerSuccess').classList.add('hidden');
+      }, 3500);
+    });
+
+    // Feedback form handler
+    document.getElementById('feedbackForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('feedbackSuccess').classList.remove('hidden');
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('feedbackSuccess').classList.add('hidden');
+      }, 3500);
+    });
+  </script>
+</body>
+</html>

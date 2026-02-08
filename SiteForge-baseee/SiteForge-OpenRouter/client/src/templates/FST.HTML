@@ -1,0 +1,357 @@
+Free Skill Training
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkillUp Free Training</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #127475;
+      --accent: #f7fff7;
+      --cta: #f95738;
+      --nav-bg: #a2d5c6;
+      --shadow: 0 2px 8px rgba(18,116,117,0.13);
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--accent);
+      color: #17333a;
+    }
+    header {
+      background: var(--nav-bg);
+      box-shadow: var(--shadow);
+      position: sticky; top:0; z-index:10;
+    }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1100px; margin: 0 auto; padding: 1rem 2rem;
+    }
+    nav .logo {
+      font-size: 1.6rem; color: var(--primary); font-weight: 700; letter-spacing: 2px;
+    }
+    nav ul {
+      padding: 0; margin: 0; display: flex; gap: 1.4rem; list-style: none;
+    }
+    nav ul li a {
+      color: var(--primary); text-decoration: none; font-weight: 500; font-size: 1.07rem; transition: color .2s;
+    }
+    nav ul li a.active, nav ul li a:hover { color: var(--cta);}
+    .container {
+      max-width: 1080px; margin: 2rem auto; padding: 1rem 2rem; background: #fff; box-shadow: var(--shadow); border-radius: 11px; min-height: 440px;
+    }
+    h1, h2, h3 { color: var(--primary);}
+    .course-card {
+      background: var(--accent); border-radius: 9px; box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.7rem; overflow: hidden;
+    }
+    .course-card img {
+      width: 145px; height: 110px; object-fit: cover;
+    }
+    .course-info { padding: 1rem 0.6rem;}
+    .enroll-btn {
+      background: var(--cta); color: #fff; border: none; padding: .45rem 1.15rem;
+      border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .2s;
+    }
+    .enroll-btn:active { background: #127475;}
+    .form-group {margin-bottom: 1rem;}
+    .form-group label {display: block; margin-bottom: .23rem; font-weight: 500;}
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;
+    }
+    .success-message { color: green; font-weight: 600; margin-top: 1rem;}
+    .progress-dash {
+      background: var(--nav-bg); border-radius: 7px; padding: 1.2rem 1.5rem; margin-top:1.5rem; margin-bottom:1.15rem;
+      color: #fff;
+    }
+    .progress-bar-bg {
+      width: 100%; background: #e7e9e9; border-radius: 9px;
+      margin: 0.7rem 0 0.22rem 0; overflow: hidden; height: 18px;
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #f95738 60%, #127475 100%);
+      height: 100%; border-radius: 9px; transition: width 0.7s;
+    }
+    .testimonial-block {
+      background: var(--accent); border-left: 7px solid var(--cta); padding: 0.9rem 1.3rem; margin-bottom: 1.4rem;
+      border-radius: 8px; box-shadow: var(--shadow); position: relative;
+    }
+    .testimonial-block img {
+      width: 54px; height: 54px; object-fit: cover; border-radius: 50%;
+      position: absolute; top: 18px; left: -38px; border: 3px solid var(--cta); background:white;
+    }
+    .resource-block {
+      display: flex; align-items: center; background: var(--accent); border-radius: 8px; gap:1rem; box-shadow:var(--shadow); margin-bottom:1.3rem; overflow:hidden;
+    }
+    .resource-block img { width: 110px; height: 90px; object-fit: cover;}
+    .resource-info {padding: 0.5rem 1rem;}
+    /* Mobile Responsive */
+    @media (max-width: 700px) {
+      nav {flex-direction: column; align-items: flex-start; padding: 1rem;}
+      .container {padding: 1rem .7rem;}
+      .course-card, .resource-block {flex-direction: column;}
+      .course-card img, .resource-block img {width: 100%; height: 150px;}
+      .testimonial-block img {display:none;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <span class="logo">SkillUp Free Training</span>
+    <ul>
+      <li><a href="#" class="active" data-page="home">Home</a></li>
+      <li><a href="#" data-page="about">About</a></li>
+      <li><a href="#" data-page="courses">Courses</a></li>
+      <li><a href="#" data-page="resources">Resources</a></li>
+      <li><a href="#" data-page="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="container" id="main-content"></div>
+<script>
+// Demo progress data
+let userProgress = {
+  "Computer Basics": 70,
+  "English Speaking": 50,
+  "Mobile Repair": 92
+};
+// Pages
+const pages = {
+  home: `
+    <h1>Welcome to SkillUp!</h1>
+    <p style="font-size:1.13rem;">
+      Free, quality skill training for underprivileged students. Enroll in courses, learn at your pace, and join a growing community of succeeders!
+    </p>
+    <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?w=970&q=80"
+      alt="Students learning" style="width:100%;max-width:540px;display:block;margin:1.4rem auto 1rem;border-radius:10px;box-shadow:var(--shadow);">
+    <h2>Our Key Courses</h2>
+    <ul>
+      <li><a href="#" data-page="courses">Computer Basics</a></li>
+      <li><a href="#" data-page="courses">English Speaking</a></li>
+      <li><a href="#" data-page="courses">Mobile Repair</a></li>
+      <li><a href="#" data-page="resources">Browse More Resources</a></li>
+    </ul>
+    <div class="progress-dash">
+      <h3>Your Learning Progress</h3>
+      <div>Computer Basics
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${userProgress["Computer Basics"] || 0}%"></div></div>
+        <span>${userProgress["Computer Basics"]||0}% completed</span>
+      </div>
+      <div>English Speaking
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${userProgress["English Speaking"]||0}%"></div></div>
+        <span>${userProgress["English Speaking"]||0}% completed</span>
+      </div>
+      <div>Mobile Repair
+        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${userProgress["Mobile Repair"]||0}%"></div></div>
+        <span>${userProgress["Mobile Repair"]||0}% completed</span>
+      </div>
+    </div>
+  `,
+  about: `
+    <h1>About SkillUp</h1>
+    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=900&q=80"
+      alt="Mentoring" style="width:100%;max-width:320px;float:right;margin-left:1.7rem;border-radius:8px;margin-bottom:1rem;">
+    <p>
+      <b>SkillUp Free Training</b> is a non-profit program dedicated to bridging the skill gap for underprivileged youth through practical, hands-on courses and mentorship.
+    </p>
+    <ul>
+      <li>Completely free for all students (ages 14+)</li>
+      <li>Training in computers, communication, self-employment, and trades</li>
+      <li>Taught by industry professionals and peer mentors</li>
+    </ul>
+    <div class="testimonial-block">
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=190&q=80" alt="Success story">
+      <strong>Priya Sharma</strong><br>
+      "I completed both Computer Basics and English courses. Now I help my friends and assist in school admin work!"
+    </div>
+    <div class="testimonial-block">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=190&q=80" alt="Success story">
+      <strong>Salman Sheikh</strong><br>
+      "The Mobile Repair course helped me start part-time work. It's changing my family's life."
+    </div>
+  `,
+  courses: `
+    <h1>Courses Offered</h1>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=700&q=80" alt="Computer course">
+      <div class="course-info">
+        <h2>Computer Basics</h2>
+        <p>
+          Learn keyboard, mouse, internet, email, and MS Office essentials.
+        </p>
+        <button class="enroll-btn" data-course="Computer Basics">Enroll</button>
+        <div>Progress: <span id="prog-computer">${userProgress["Computer Basics"]||0}%</span></div>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1515168833906-d2a3b82b6b2e?w=800&q=80" alt="English Speaking">
+      <div class="course-info">
+        <h2>English Speaking</h2>
+        <p>
+          Practice real conversations, grammar, and public speaking.
+        </p>
+        <button class="enroll-btn" data-course="English Speaking">Enroll</button>
+        <div>Progress: <span id="prog-english">${userProgress["English Speaking"]||0}%</span></div>
+      </div>
+    </div>
+    <div class="course-card">
+      <img src="https://images.unsplash.com/photo-1512070800541-1087e4a477c6?w=800&q=80" alt="Mobile Repair">
+      <div class="course-info">
+        <h2>Mobile Repair</h2>
+        <p>
+          Hands-on with common mobile issues, hardware tools, and real repairs.
+        </p>
+        <button class="enroll-btn" data-course="Mobile Repair">Enroll</button>
+        <div>Progress: <span id="prog-mobile">${userProgress["Mobile Repair"]||0}%</span></div>
+      </div>
+    </div>
+    <div id="enroll-form-area"></div>
+  `,
+  resources: `
+    <h1>Learning Resources</h1>
+    <div class="resource-block">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=700&q=80" alt="E-books">
+      <div class="resource-info">
+        <h2>Free E-books & Study Material</h2>
+        <p>Download PDF notes, workbooks, and guides for all skill levels.</p>
+        <a href="#" style="color:var(--cta);text-decoration:underline;">Get Resources</a>
+      </div>
+    </div>
+    <div class="resource-block">
+      <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a70b0?w=700&q=80" alt="Video Tutorials">
+      <div class="resource-info">
+        <h2>Video Tutorials</h2>
+        <p>Learn with short, easy-to-follow videos. No high-speed internet needed!</p>
+        <a href="#" style="color:var(--cta);text-decoration:underline;">Watch Videos</a>
+      </div>
+    </div>
+    <div class="resource-block">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=80" alt="Community Forum">
+      <div class="resource-info">
+        <h2>Community Forum</h2>
+        <p>Ask questions, get help, and connect with other learners.</p>
+        <a href="#" style="color:var(--cta);text-decoration:underline;">Join Forum</a>
+      </div>
+    </div>
+  `,
+  contact: `
+    <h1>Contact Us</h1>
+    <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=900&q=80"
+      alt="Contact" style="width:100%;max-width:270px;float:right;border-radius:8px;margin-left:2rem;">
+    <p>
+      Reach out with your doubts, feedback, or to volunteer!
+    </p>
+    <form id="contact-form" autocomplete="off">
+      <div class="form-group">
+        <label for="contact-name">Name*</label>
+        <input type="text" id="contact-name" required>
+      </div>
+      <div class="form-group">
+        <label for="contact-email">Email*</label>
+        <input type="email" id="contact-email" required>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Message*</label>
+        <textarea id="contact-message" rows="4" required></textarea>
+      </div>
+      <button class="enroll-btn" type="submit">Send Message</button>
+      <div id="contact-success" class="success-message"></div>
+    </form>
+    <p>
+      Email: <a href="mailto:hello@skillup.org">hello@skillup.org</a><br>
+      Phone: +91-9001060007<br>
+      Address: 99 Bright Lane, Ahmedabad 380018, India
+    </p>
+  `
+};
+
+function loadPage(page) {
+  document.getElementById('main-content').innerHTML = pages[page];
+  document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+  document.querySelector(`nav ul li a[data-page="${page}"]`).classList.add('active');
+  window.location.hash = page;
+
+  document.querySelectorAll('a[data-page]').forEach(a => {
+    a.onclick = function(e) { e.preventDefault(); loadPage(a.getAttribute('data-page')); }
+  });
+  // Enrollment logic
+  if (page === 'courses') {
+    document.querySelectorAll('.enroll-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        const course = btn.getAttribute('data-course');
+        showEnrollForm(course);
+      };
+    });
+  }
+  if (page === 'contact') {
+    document.getElementById('contact-form').onsubmit = function(e){
+      e.preventDefault();
+      document.getElementById('contact-success').textContent = "Thank you for contacting us! We'll reply soon.";
+      this.reset();
+    }
+  }
+}
+
+function showEnrollForm(course) {
+  const formHtml = `
+    <form id="enroll-form" autocomplete="off" style="padding:1.2rem;background:var(--nav-bg);margin-top:1.1rem;border-radius:9px;">
+      <h3>Enroll in ${course}</h3>
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age*</label>
+        <input type="number" id="age" min="14" max="30" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="goal">Why do you want to take this course?</label>
+        <textarea id="goal" rows="2"></textarea>
+      </div>
+      <button type="submit" class="enroll-btn">Submit Enrollment</button>
+      <div id="enroll-success" class="success-message"></div>
+    </form>`;
+  document.getElementById('enroll-form-area').innerHTML = formHtml;
+  document.getElementById('enroll-form').onsubmit = function(e){
+    e.preventDefault();
+    userProgress[course] = 5; // Start them at 5% progress!
+    updateProgress();
+    document.getElementById('enroll-success').textContent = "You're enrolled! Progress tracking starts now.";
+    this.reset();
+  }
+  document.getElementById('enroll-form').scrollIntoView({behavior:"smooth"});
+}
+function updateProgress() {
+  let update = (id, percent) => {
+    let el = document.getElementById(id);
+    if(el) el.textContent = percent + "%";
+  };
+  update('prog-computer', userProgress["Computer Basics"]||0);
+  update('prog-english', userProgress["English Speaking"]||0);
+  update('prog-mobile', userProgress["Mobile Repair"]||0);
+}
+function routeFromHash() {
+  const hash = window.location.hash.replace(/^#/, '') || 'home';
+  if (pages[hash]) loadPage(hash);
+  else loadPage('home');
+}
+window.addEventListener('hashchange', routeFromHash);
+// Setup nav listeners
+document.querySelectorAll('nav ul li a').forEach(a => {
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    loadPage(this.getAttribute('data-page'));
+  });
+});
+routeFromHash();
+</script>
+</body>
+</html>

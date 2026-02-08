@@ -1,0 +1,311 @@
+"Tree Plantation Campaign",
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>GreenRoots Tree Plantation Campaign</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#f5faf6;}
+    .navbar {position:sticky;top:0;z-index:99;background:#218857;color:#fff;}
+    .nav-container {max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;}
+    .nav-logo {font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:0.5rem;}
+    .nav-menu {display:flex;gap:1.2rem;}
+    .nav-link {color:#fff;text-decoration:none;padding:0.65rem 1.05rem;border-radius:4px;}
+    .nav-link.active,.nav-link:hover {background:#50b66a;}
+    .nav-toggle {display:none;flex-direction:column;cursor:pointer;}
+    .bar {width:24px;height:4px;margin:3px 0;background:#fff;}
+    .page {display:none;max-width:1100px;margin:auto;padding:1.5rem;}
+    .page.active {display:block;}
+    .hero {display:flex;flex-wrap:wrap;align-items:center;gap:2rem;background:#e6fbe9;border-radius:8px;padding:2.5rem 1rem;margin-bottom:2rem;}
+    .hero-content {flex:1 1 320px;}
+    .hero-content h1{color:#218857;font-size:2.4rem;}
+    .hero-image img {width:340px;border-radius:8px;box-shadow:0 0 12px #ccc;}
+    .btn {padding:0.7rem 1.3rem;font-size:1rem;border:none;border-radius:4px;cursor:pointer;margin-right:1rem;text-decoration:none;}
+    .btn-primary {background:#218857;color:#fff;}
+    .btn-secondary {background:#e6b813;color:#fff;}
+    .intro-stats {display:flex;justify-content:center;gap:2rem;margin:2rem 0 1rem;flex-wrap:wrap;}
+    .intro-stat-item {background:#fff;border-radius:8px;box-shadow:0 2px 8px #ddf1de;text-align:center;flex:1 1 200px;padding:1.05rem;min-width:145px;}
+    .intro-stat-number {font-size:1.7rem;font-weight:700;margin-bottom:0.45rem;}
+    .about-section ul{margin:1rem 0 0 0;}
+    .about-section li{margin-bottom:0.5rem;}
+    .campaigns-section {margin:2rem 0;}
+    .campaign-grid {display:flex;flex-wrap:wrap;gap:1.5rem;}
+    .campaign-card {background:#fff;border-radius:8px;box-shadow:0 2px 8px #ddf1de;max-width:340px;overflow:hidden;flex:1 1 305px;}
+    .campaign-card img {width:100%;height:135px;object-fit:cover;}
+    .campaign-content {padding:0.9rem;}
+    .campaign-title{font-weight:bold;color:#218857;font-size:1.2rem;}
+    .campaign-date{font-size:0.96rem;color:#505a4a;margin:0.16rem 0;}
+    .campaign-desc{margin:0.4rem 0;}
+    .participation-section{margin:2.2rem 0;}
+    .participation-guide{background:#e6fbe9;border-radius:8px;padding:2.2rem 1.1rem;}
+    .event-signup-form{background:#fff;border-radius:8px;box-shadow:0 2px 8px #ddf1de;padding:1.2rem;max-width:340px;}
+    .form-row{display:flex;gap:1rem;}
+    .form-group{margin-bottom:0.9rem;}
+    .guide-list{margin-top:0.5rem;}
+    .progress-section{margin:2.2rem 0;}
+    .progress-stats{display:flex;flex-wrap:wrap;gap:1.2rem;}
+    .progress-item{background:#fff;border-radius:8px;box-shadow:0 2px 8px #ddf1de;text-align:center;flex:1 1 154px;padding:1.02rem;}
+    .progress-value{font-size:1.3rem;font-weight:bold;}
+    .map-container{margin:2rem 0;text-align:center;}
+    .progress-map-img{width:99%;max-width:700px;border-radius:10px;box-shadow:0 2px 12px #bee9be;}
+    .gallery-section{margin:2.7rem 0;}
+    .gallery-grid{display:flex;gap:1.1rem;flex-wrap:wrap;}
+    .gallery-img img{width:220px;border-radius:14px;box-shadow:0 2px 8px #ddf1de;object-fit:cover;}
+    .footer {background:#218857;color:#eee;margin-top:2.2rem;padding:2rem 0 1rem;}
+    .footer-content {display:flex;gap:2.4rem;flex-wrap:wrap;max-width:1100px;margin:auto;}
+    .footer-section {flex:1 1 220px;}
+    .footer-bottom {text-align:center;margin-top:1.2rem;}
+    .social-links a{color:#f6f6f6;margin-right:0.57rem;font-size:1.18rem;}
+    @media (max-width:900px) { .nav-container,.page {max-width:98vw;} }
+    @media (max-width:700px) {
+      .hero,.intro-stats,.campaign-grid,.progress-stats,.gallery-grid,.footer-content{flex-direction:column;}
+      .hero-image img,.progress-map-img{width:99vw;max-width:340px;}
+      .navbar .nav-menu{flex-direction:column;position:absolute;top:57px;right:0;background:#218857;width:100vw;display:none;}
+      .navbar .nav-menu.open{display:flex;}.nav-toggle{display:flex;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo"><i class="fas fa-tree"></i> GreenRoots</div>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#" class="nav-link active" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="about">About</a>
+        <a href="#" class="nav-link" data-page="campaigns">Campaigns</a>
+        <a href="#" class="nav-link" data-page="participation">Participate</a>
+        <a href="#" class="nav-link" data-page="progress">Progress</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div class="page active" id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>GreenRoots Tree Plantation Campaign</h1>
+        <p>Join thousands of volunteers in planting trees for a greener planet. Help us restore forests and empower communities to fight climate change.</p>
+        <div>
+          <a href="#" class="btn btn-primary" data-page="participation">Join Now</a>
+          <a href="#" class="btn btn-secondary" data-page="progress">See Progress</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=700&q=80" alt="Tree planting action">
+      </div>
+    </section>
+    <div class="intro-stats">
+      <div class="intro-stat-item"><i class="fas fa-users"></i>
+        <div class="intro-stat-number" data-target="3400">0</div>
+        <div>Active Volunteers</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-leaf"></i>
+        <div class="intro-stat-number" data-target="52000">0</div>
+        <div>Trees Planted</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-globe"></i>
+        <div class="intro-stat-number" data-target="23">0</div>
+        <div>Communities</div>
+      </div>
+      <div class="intro-stat-item"><i class="fas fa-calendar-alt"></i>
+        <div class="intro-stat-number" data-target="16">0</div>
+        <div>Events Completed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Page -->
+  <div class="page" id="about">
+    <section class="about-section">
+      <h2>About the Campaign</h2>
+      <p>GreenRoots is a people-driven tree plantation campaign aiming to plant 100,000 trees by 2030, across cities, villages, and degraded lands.</p>
+      <ul>
+        <li><b>Mission:</b> Restore green cover through massive afforestation, community awareness, and sustainable care.</li>
+        <li><b>Vision:</b> A healthy planet, thriving biodiversity, and resilient local communities.</li>
+        <li><b>Values:</b> Participation, transparency, inclusivity, and stewardship of nature.</li>
+      </ul>
+      <div style="margin-top:1.3rem;"><img src="https://images.unsplash.com/photo-1445264613933-5001b61be7a5?auto=format&fit=crop&w=700&q=80" alt="Green forest" style="width:98%;max-width:450px;border-radius:8px;box-shadow:0 2px 8px #bee9be;"></div>
+    </section>
+  </div>
+
+  <!-- Campaigns Page -->
+  <div class="page" id="campaigns">
+    <section class="campaigns-section">
+      <h2>Upcoming Campaigns & Events</h2>
+      <div class="campaign-grid">
+        <div class="campaign-card">
+          <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=700&q=80" alt="Rural trees">
+          <div class="campaign-content">
+            <div class="campaign-title">Village Green Day</div>
+            <div class="campaign-date"><i class="fas fa-calendar-alt"></i> Nov 12, 2025</div>
+            <div class="campaign-desc">Rural reforestation activity in 7 villages; local species and fruit saplings distributed.</div>
+            <div><b>Contact:</b> Rhea Sharma (Co-ordinator)</div>
+          </div>
+        </div>
+        <div class="campaign-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80" alt="Community planting">
+          <div class="campaign-content">
+            <div class="campaign-title">Urban Clean Air Drive</div>
+            <div class="campaign-date"><i class="fas fa-calendar-alt"></i> Dec 2, 2025</div>
+            <div class="campaign-desc">Planting on highways and streets with schools and civic bodies.</div>
+            <div><b>Contact:</b> Maria John (City lead)</div>
+          </div>
+        </div>
+        <div class="campaign-card">
+          <img src="https://images.unsplash.com/photo-1445264613933-5001b61be7a5?auto=format&fit=crop&w=700&q=80" alt="Forest restoration">
+          <div class="campaign-content">
+            <div class="campaign-title">Forest Revival Initiative</div>
+            <div class="campaign-date"><i class="fas fa-calendar-alt"></i> Jan 17, 2026</div>
+            <div class="campaign-desc">Replanting native trees in degraded forest land, guided by experts.</div>
+            <div><b>Contact:</b> Aditya Deshmukh (Forest Team)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Participation Page -->
+  <div class="page" id="participation">
+    <section class="participation-section">
+      <div class="participation-guide">
+        <h2>How to Participate</h2>
+        <ol class="guide-list">
+          <li>Register for upcoming events below.</li>
+          <li>Show up with basic tools, water, and friends!</li>
+          <li>Learn from experts on planting, soil, and maintenance.</li>
+          <li>Share pictures and join our online community to inspire others.</li>
+        </ol>
+        <h4 style="margin-top:1.1rem;">Sign Up for Event</h4>
+        <form id="event-signup-form" class="event-signup-form">
+          <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+          <div class="form-group"><label>Choose Event</label>
+            <select name="event" required>
+              <option value="">Select an event</option>
+              <option value="Village Green Day">Village Green Day</option>
+              <option value="Urban Clean Air Drive">Urban Clean Air Drive</option>
+              <option value="Forest Revival Initiative">Forest Revival Initiative</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <div id="signup-success" style="display:none;color:green;margin-top:.7rem;"></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Progress Page -->
+  <div class="page" id="progress">
+    <section class="progress-section">
+      <h2>Campaign Progress</h2>
+      <div class="progress-stats">
+        <div class="progress-item"><i class="fas fa-leaf"></i><div class="progress-value" data-value="52000">0</div><div>Trees Planted</div></div>
+        <div class="progress-item"><i class="fas fa-users"></i><div class="progress-value" data-value="3400">0</div><div>Active Volunteers</div></div>
+        <div class="progress-item"><i class="fas fa-calendar-alt"></i><div class="progress-value" data-value="16">0</div><div>Events Completed</div></div>
+      </div>
+      <div class="map-container">
+        <h3>Progress Map</h3>
+        <img src="https://images.unsplash.com/photo-1465101178521-c5249f4df085?auto=format&fit=crop&w=900&q=80" class="progress-map-img" alt="Progress map">
+      </div>
+      <section class="gallery-section">
+        <h3>Gallery</h3>
+        <div class="gallery-grid">
+          <div class="gallery-img"><img src="https://images.unsplash.com/photo-1445264613933-5001b61be7a5?auto=format&fit=crop&w=700&q=80" alt="Trees"></div>
+          <div class="gallery-img"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80" alt="Planting hands"></div>
+          <div class="gallery-img"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Volunteers"></div>
+          <div class="gallery-img"><img src="https://images.unsplash.com/photo-1519864645-21d1b6c3c2b3?auto=format&fit=crop&w=700&q=80" alt="Kids plant"></div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>GreenRoots</h3>
+        <p>Together, let's restore the earth and build a legacy of trees.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" data-page="about">About</a></li>
+          <li><a href="#" data-page="campaigns">Campaigns</a></li>
+          <li><a href="#" data-page="participation">Participate</a></li>
+          <li><a href="#" data-page="progress">Progress</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: hello@greenrootscampaign.org</p>
+        <p>Phone: +91 88009 11234</p>
+        <p>Address: 52 Sapling St, EcoCity, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 GreenRoots Campaign. All rights reserved.</p></div>
+  </footer>
+  <script>
+    // Responsive navbar toggle
+    document.getElementById('nav-toggle').onclick = function() {
+      document.getElementById('nav-menu').classList.toggle('open');
+    };
+    // Single Page Navigation
+    function showPage(page) {
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+      document.querySelectorAll('.nav-link[data-page="'+page+'"]').forEach(l=>l.classList.add('active'));
+      document.getElementById('nav-menu').classList.remove('open');
+      window.scrollTo(0,0);
+    }
+    document.querySelectorAll('[data-page]').forEach(function(elem){
+      elem.addEventListener('click',function(e){
+        e.preventDefault();
+        showPage(this.getAttribute('data-page'));
+      });
+    });
+    // Home stats animation
+    function animateStats(selector){
+      document.querySelectorAll(selector).forEach(function(el){
+        let target=+el.getAttribute('data-target'),num=0,step=Math.max(1,Math.ceil(target/50));
+        function animate(){num+=step;if(num>=target){num=target;}
+          el.textContent=num.toLocaleString();
+          if(num<target){setTimeout(animate,24);}
+        } animate(); });
+    } animateStats('.intro-stat-number');
+    // Progress stats animation
+    function animateProgressStats(){
+      document.querySelectorAll('.progress-value').forEach(function(el){
+        let target=+el.getAttribute('data-value'),num=0,step=Math.max(1,Math.ceil(target/45));
+        function animate(){num+=step;if(num>=target){num=target;}
+          el.textContent=num.toLocaleString();
+          if(num<target){setTimeout(animate,24);}
+        } animate();
+      });
+    }
+    // When Progress page is shown, trigger stats animation
+    document.querySelectorAll('.nav-link[data-page="progress"],[data-page="progress"]').forEach(link=>{
+      link.addEventListener('click',function(){setTimeout(animateProgressStats,200);});
+    });
+    // Event Signup Form Submission (Demo)
+    document.getElementById('event-signup-form').onsubmit=function(e){
+      e.preventDefault();
+      document.getElementById('signup-success').style.display="block";
+      document.getElementById('signup-success').textContent="Thanks for signing up, we'll email details soon!";
+      this.reset();
+      setTimeout(function(){document.getElementById('signup-success').style.display="none";},3200);
+    };
+  </script>
+</body>
+</html>

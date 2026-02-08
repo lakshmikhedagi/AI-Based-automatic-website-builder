@@ -1,0 +1,219 @@
+Community Health Awareness
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Health Awareness</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {margin:0;font-family:sans-serif;background:#f4f8fb;}
+    nav {background: #1478ad; color:#fff; display:flex;flex-wrap: wrap; align-items: center;}
+    nav .logo {font-weight:bolder;font-size:1.2em;padding:16px;}
+    nav ul {display:flex;list-style:none;margin:0;padding:0;}
+    nav li {margin:0;}
+    nav a {display:block;padding:16px 18px;color:#fff;text-decoration:none;}
+    nav a:hover, nav a.active {background:#11608e;}
+    .container {max-width:900px;margin:32px auto;padding:24px;background:#fff;border-radius:8px;box-shadow:0 3px 16px rgba(20,120,173,0.05);}
+    img.responsive {width:100%;max-width:560px;display:block;margin:24px auto 0; border-radius:8px;}
+    h1, h2 {color:#1478ad;}
+    @media (max-width:600px) {
+      nav ul {flex-direction:column;}
+      .container {padding:12px;}
+    }
+    /* Calendar Styles */
+    .calendar {display: flex; flex-wrap: wrap; max-width: 350px; margin: 0 auto;}
+    .calendar div {width: 14.25%; aspect-ratio: 1/1; text-align: center; line-height: 2.5em; margin-bottom: 6px; border-radius: 4px;}
+    .calendar .daytitle {background: #7ab9df; color:#fff; font-weight:600;}
+    .calendar .eventday {background:#e7ffd9; color:#1b791b; border:2px solid #74d974;}
+    /* Quiz Styles */
+    #quiz {max-width:440px; margin:0 auto;}
+    #quiz-question {margin:18px 0;}
+    .quiz-choices label { display:block; margin-bottom:12px;}
+    #quiz-result { font-weight:600; color:#1478ad; margin-top:18px;}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">Health Awareness</div>
+  <ul id="nav-links">
+    <li><a href="#" class="active" onclick="gotoPage('home');return false;">Home</a></li>
+    <li><a href="#" onclick="gotoPage('tips');return false;">Health Tips</a></li>
+    <li><a href="#" onclick="gotoPage('stats');return false;">Local Stats</a></li>
+    <li><a href="#" onclick="gotoPage('calendar');return false;">Event Calendar</a></li>
+    <li><a href="#" onclick="gotoPage('quiz');return false;">Health Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="container" style="display:block">
+  <h1>Welcome to Community Health Awareness!</h1>
+  <p>Our mission is to empower you with reliable health information, local data, and helpful resources for a healthier community. Explore tips, local stats, events, and take our health quiz to boost your well-being!</p>
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=800&q=80" class="responsive" alt="Community Health">
+</div>
+
+<!-- HEALTH TIPS PAGE -->
+<div id="page-tips" class="container" style="display:none">
+  <h2>Top Health Tips</h2>
+  <ul>
+    <li>Eat a balanced diet with plenty of fruits and vegetables.</li>
+    <li>Exercise at least 30 minutes, five days a week.</li>
+    <li>Maintain good hand and respiratory hygiene.</li>
+    <li>Stay hydrated with at least 8 glasses of water daily.</li>
+    <li>Sleep 7-9 hours nightly for optimal rest and recovery.</li>
+    <li>Get regular health screenings and vaccinations.</li>
+    <li>Avoid tobacco and limit alcohol intake.</li>
+    <li>Manage stress with mindfulness, hobbies, or connecting with friends.</li>
+  </ul>
+  <img src="https://images.unsplash.com/photo-1514995669114-d1c1beba82c7?fit=crop&w=800&q=80" class="responsive" alt="Healthy Lifestyle">
+</div>
+
+<!-- LOCAL STATS PAGE -->
+<div id="page-stats" class="container" style="display:none">
+  <h2>Local Health Statistics (2025)</h2>
+  <table style="width:100%;margin-bottom:20px;">
+    <tr style="background:#f7fafb;"><th style="padding:8px;">Statistic</th><th style="padding:8px;">Value</th></tr>
+    <tr><td style="padding:8px;">Average Life Expectancy</td><td style="padding:8px;">72 years</td></tr>
+    <tr><td style="padding:8px;">Vaccination Rate (adults)</td><td style="padding:8px;">89%</td></tr>
+    <tr><td style="padding:8px;">Obesity Rate</td><td style="padding:8px;">23%</td></tr>
+    <tr><td style="padding:8px;">Daily Physical Activity</td><td style="padding:8px;">64%</td></tr>
+    <tr><td style="padding:8px;">Access to Clean Water</td><td style="padding:8px;">96%</td></tr>
+    <tr><td style="padding:8px;">Smoking Prevalence</td><td style="padding:8px;">12%</td></tr>
+  </table>
+  <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?fit=crop&w=800&q=80" class="responsive" alt="Health Data">
+</div>
+
+<!-- EVENT CALENDAR PAGE -->
+<div id="page-calendar" class="container" style="display:none">
+  <h2>Community Health Events (October 2025)</h2>
+  <div class="calendar" id="calendar">
+    <!-- Calendar content via JS -->
+  </div>
+  <ul style="margin-top:18px;">
+    <li><span style="color:#1b791b;">Oct 7:</span> Free Health Check-Up Camp</li>
+    <li><span style="color:#1b791b;">Oct 14:</span> Mental Health Awareness Talk</li>
+    <li><span style="color:#1b791b;">Oct 23:</span> Healthy Cooking Workshop</li>
+    <li><span style="color:#1b791b;">Oct 28:</span> Community Run/Walk</li>
+  </ul>
+  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?fit=crop&w=800&q=80" class="responsive" alt="Health Events">
+</div>
+
+<!-- HEALTH QUIZ PAGE -->
+<div id="page-quiz" class="container" style="display:none">
+  <h2>Test Your Health Knowledge!</h2>
+  <form id="quiz" onsubmit="return false;">
+    <div id="quiz-question"></div>
+    <div class="quiz-choices"></div>
+    <button type="button" onclick="submitQuizAnswer()">Submit</button>
+    <div id="quiz-result"></div>
+  </form>
+  <img src="https://images.unsplash.com/photo-1512252651608-cb63e04d343b?fit=crop&w=800&q=80" class="responsive" alt="Health Quiz">
+</div>
+
+<script>
+  // Navigation
+  function gotoPage(page) {
+    let ids = ['home','tips','stats','calendar','quiz'];
+    ids.forEach(id => {
+      document.getElementById('page-'+id).style.display = (page===id) ? 'block' : 'none';
+      const navLinks = document.querySelectorAll('#nav-links a');
+      navLinks.forEach(a=> {
+        if(a.textContent.replace(/\s/g,'').toLowerCase().includes(page)) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+    });
+    if(page==='quiz') showQuizQuestion(0);
+    if(page==='calendar') drawCalendar();
+  }
+
+  // Responsive navigation (optional for JS-driven SPA)
+  window.addEventListener('hashchange', () => {
+    const p = location.hash.replace('#','');
+    if(['home','tips','stats','calendar','quiz'].includes(p)) {
+      gotoPage(p);
+    }
+  });
+
+  // Calendar Data
+  function drawCalendar() {
+    const calendar = document.getElementById('calendar');
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let out = '';
+    days.forEach(d=>out+=`<div class="daytitle">${d}</div>`);
+    // Get Oct 2025: 1st is Wednesday, 31 days
+    const events = {7:{name:'Check-Up'},14:{name:'Mental Health'},23:{name:'Cooking'},28:{name:'Run/Walk'}};
+    let dow = 3;
+    let i = 1;
+    // Padding for first 3 days
+    for(let pad=0;pad<dow;pad++) out+='<div></div>';
+    for(i=1;i<=31;i++){
+      if(events[i]) out+=`<div class="eventday" title="${events[i].name}">${i}</div>`;
+      else out+=`<div>${i}</div>`;
+    }
+    calendar.innerHTML = out;
+  }
+
+  // Quiz Data
+  const quizQuestions = [
+    {
+      q: "How much moderate exercise is recommended for adults weekly?",
+      choices: ["30 minutes","75 minutes","150 minutes","300 minutes"],
+      a: 2
+    },
+    {
+      q: "Which is NOT a recommended way to reduce stress?",
+      choices: ["Deep breathing","Junk food","Meditation","Exercising"],
+      a: 1
+    },
+    {
+      q: "How many hours of sleep are ideal for adults?",
+      choices: ["3-5","5-6","7-9","10-12"],
+      a: 2
+    },
+    {
+      q: "True or False: Smoking increases risk of chronic diseases.",
+      choices: ["True","False"],
+      a: 0
+    },
+    {
+      q: "Which food is best for heart health?",
+      choices: ["Fried snacks","Fresh fruits","Sugary sodas","Processed meats"],
+      a: 1
+    }
+  ];
+  let quizIndex = 0, quizScore = 0;
+  function showQuizQuestion(index) {
+    quizIndex = index; quizScore = 0;
+    document.getElementById('quiz-result').textContent = '';
+    if (index < quizQuestions.length) {
+      let q = quizQuestions[index];
+      document.getElementById('quiz-question').innerHTML = `Q${index+1}: ${q.q}`;
+      let ch = '';
+      q.choices.forEach((c,i)=>
+        ch+=`<label><input name="quiz-choice" type="radio" value="${i}"> ${c}</label>`);
+      document.querySelector('.quiz-choices').innerHTML = ch;
+    } else {
+      document.getElementById('quiz-question').innerHTML = '';
+      document.querySelector('.quiz-choices').innerHTML = '';
+      document.getElementById('quiz-result').textContent = `Quiz complete!`;
+    }
+  }
+  function submitQuizAnswer() {
+    let radios = document.getElementsByName('quiz-choice');
+    let selected = -1;
+    radios.forEach(r => { if (r.checked) selected = +r.value; });
+    if(selected === -1) {document.getElementById('quiz-result').textContent = "Please select an answer."; return;}
+    if(selected === quizQuestions[quizIndex].a) quizScore++;
+    quizIndex++;
+    if(quizIndex < quizQuestions.length) {
+      showQuizQuestion(quizIndex);
+    } else {
+      document.getElementById('quiz-question').innerHTML = '';
+      document.querySelector('.quiz-choices').innerHTML = '';
+      document.getElementById('quiz-result').textContent = `Quiz finished! Your score: ${quizScore} / ${quizQuestions.length}`;
+    }
+  }
+  // Init home
+  gotoPage('home');
+</script>
+</body>
+</html>

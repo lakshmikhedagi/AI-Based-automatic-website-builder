@@ -1,0 +1,277 @@
+Animal Rescue Adoption
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawsHope Animal Rescue</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff7ed;
+      color: #371d1b;
+    }
+    nav {
+      background: #df774d;
+      padding: 0.7em 1em;
+    }
+    nav ul {
+      margin: 0; padding: 0;
+      display: flex; list-style: none;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin-right: 1em;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4em 0.8em;
+      border-radius: 2px;
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      background: #c94e27;
+    }
+    .main {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1.5em;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: none;
+    }
+    .main.active { display: block; }
+    .responsive-img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 1.5em 0;
+      border-radius: 4px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+    }
+    footer {
+      text-align: center;
+      color: #fff;
+      background: #df774d;
+      padding: 1em 0;
+      margin-top: 2em;
+      font-size: 1em;
+    }
+    form {
+      margin: 2em 0 1em;
+      display: flex;
+      flex-direction: column;
+    }
+    label { margin: 0.8em 0 0.3em; }
+    input, select, textarea {
+      padding: 0.55em;
+      font-size: 1em;
+      border: 1px solid #eac3ae;
+      border-radius: 3px;
+      margin-bottom: 1em;
+    }
+    button {
+      background: #df774d;
+      color: #fff;
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: 3px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button:hover {
+      background: #c94e27;
+    }
+    .gallery-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    .gallery-images img {
+      flex: 1 1 40%;
+    }
+    @media (max-width: 600px) {
+      .main { margin: 1em 0; padding: 1em;}
+      nav ul { flex-direction: column; }
+      .gallery-images { flex-direction: column;}
+      .responsive-img, .gallery-images img { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a data-target="home" class="active">Home</a></li>
+      <li><a data-target="about">About</a></li>
+      <li><a data-target="adopt">Adopt</a></li>
+      <li><a data-target="gallery">Gallery</a></li>
+      <li><a data-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="main active">
+    <h1>PawsHope Animal Rescue Adoption Drive</h1>
+    <p>Help us give loving homes to rescued animals. See profiles, apply for adoption, and support our mission.</p>
+    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=800&q=80" alt="Adopted dog" class="responsive-img">
+    <div>
+      <h2>Featured Pet of the Month</h2>
+      <div id="featuredPet"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="main">
+    <h1>About PawsHope</h1>
+    <p>PawsHope is dedicated to rescuing abandoned pets and placing them in safe, loving homes. We believe every animal deserves happiness and care.</p>
+    <ul>
+      <li>Rescue and rehabilitate stray animals</li>
+      <li>Facilitate adoption and foster care</li>
+      <li>Promote responsible pet ownership</li>
+    </ul>
+    <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d4?auto=format&fit=crop&w=800&q=80" alt="Rescue volunteer" class="responsive-img">
+  </section>
+
+  <!-- Adopt -->
+  <section id="adopt" class="main">
+    <h1>Adopt a Pet</h1>
+    <div id="petFinder"></div>
+    <h2>Apply for Adoption</h2>
+    <form id="adoptForm">
+      <label for="personName">Your Name:</label>
+      <input type="text" id="personName" required>
+      <label for="personEmail">Email:</label>
+      <input type="email" id="personEmail" required>
+      <label for="petChoice">Choose a Pet:</label>
+      <select id="petChoice">
+        <option value="Bella">Bella (Dog)</option>
+        <option value="Milo">Milo (Cat)</option>
+        <option value="Charlie">Charlie (Dog)</option>
+        <option value="Luna">Luna (Cat)</option>
+      </select>
+      <button type="submit">Apply</button>
+    </form>
+    <div id="adoptResult"></div>
+    <img src="https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=800&q=80" alt="Rescue animals" class="responsive-img">
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="main">
+    <h1>Gallery</h1>
+    <div class="gallery-images">
+      <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Rescue dog" class="responsive-img">
+      <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d4?auto=format&fit=crop&w=400&q=80" alt="Rescue volunteer" class="responsive-img">
+      <img src="https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=400&q=80" alt="Shelter animals" class="responsive-img">
+      <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Adoption" class="responsive-img">
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="main">
+    <h1>Contact Us</h1>
+    <form id="contactForm">
+      <label for="cname">Your Name:</label>
+      <input type="text" id="cname" required>
+      <label for="cemail">Your Email:</label>
+      <input type="email" id="cemail" required>
+      <label for="cmessage">Message:</label>
+      <textarea id="cmessage" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="contactResult"></div>
+    <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d4?auto=format&fit=crop&w=800&q=80" alt="Contact animal rescue" class="responsive-img">
+  </section>
+
+  <footer>
+    &copy; 2025 PawsHope. All rights reserved.
+  </footer>
+
+  <script>
+    // Navigation Switching
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+        document.querySelectorAll('.main').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(link.getAttribute('data-target')).classList.add('active');
+      });
+    });
+
+    // Featured Pet
+    const featuredPetDiv = document.getElementById('featuredPet');
+    if (featuredPetDiv) {
+      const pets = [
+        {name: "Bella", type: "Dog", desc: "Friendly labrador, loves playtime!", img: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80"},
+        {name: "Milo", type: "Cat", desc: "Gentle tabby, enjoys lap naps.", img: "https://images.unsplash.com/photo-1518715308788-3005759c61d4?auto=format&fit=crop&w=400&q=80"},
+        {name: "Charlie", type: "Dog", desc: "Energetic terrier, great with kids!", img: "https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=400&q=80"},
+        {name: "Luna", type: "Cat", desc: "Sweet rescue, very affectionate.", img: "https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=400&q=80"}
+      ];
+      const pet = pets[Math.floor(Math.random() * pets.length)];
+      featuredPetDiv.innerHTML = `
+        <img src="${pet.img}" alt="${pet.name}" class="responsive-img" style="max-width:220px;">
+        <h3>${pet.name} (${pet.type})</h3>
+        <p>${pet.desc}</p>
+      `;
+    }
+
+    // Pet Finder
+    const petFinderDiv = document.getElementById('petFinder');
+    if (petFinderDiv) {
+      petFinderDiv.innerHTML = `
+        <h2>Available Pets</h2>
+        <div class="pf-list">
+          <div><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=180&q=80" alt="Bella" style="border-radius:8px;"><p><b>Bella (Dog)</b><br>Friendly labrador<br>Age: 2 yrs</p></div>
+          <div><img src="https://images.unsplash.com/photo-1518715308788-3005759c61d4?auto=format&fit=crop&w=180&q=80" alt="Milo" style="border-radius:8px;"><p><b>Milo (Cat)</b><br>Gentle tabby<br>Age: 3 yrs</p></div>
+          <div><img src="https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=180&q=80" alt="Charlie" style="border-radius:8px;"><p><b>Charlie (Dog)</b><br>Energetic terrier<br>Age: 1 yr</p></div>
+          <div><img src="https://images.unsplash.com/photo-1465101178521-cce3aaa6a63c?auto=format&fit=crop&w=180&q=80" alt="Luna" style="border-radius:8px;"><p><b>Luna (Cat)</b><br>Sweet rescue<br>Age: 2 yrs</p></div>
+        </div>
+      `;
+    }
+
+    // Adoption Form
+    const adoptForm = document.getElementById('adoptForm');
+    if (adoptForm) {
+      adoptForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('personName').value.trim();
+        const email = document.getElementById('personEmail').value.trim();
+        const pet = document.getElementById('petChoice').value;
+        const result = document.getElementById('adoptResult');
+        if (name && email && pet) {
+          result.textContent = `Thank you, ${name}! Your application for adopting ${pet} has been received.`;
+          result.style.color = "green";
+          adoptForm.reset();
+        } else {
+          result.textContent = "Please fill out all fields.";
+          result.style.color = "red";
+        }
+      });
+    }
+
+    // Contact Form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('cname').value.trim();
+        const email = document.getElementById('cemail').value.trim();
+        const msg = document.getElementById('cmessage').value.trim();
+        const result = document.getElementById('contactResult');
+        if (name && email && msg) {
+          result.textContent = `Thank you, ${name}! We'll get back to you soon.`;
+          result.style.color = "green";
+          contactForm.reset();
+        } else {
+          result.textContent = "All fields are required.";
+          result.style.color = "red";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

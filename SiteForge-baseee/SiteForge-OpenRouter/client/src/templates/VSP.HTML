@@ -1,0 +1,325 @@
+Volunteer Showcase Platform
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Volunteer Showcase Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f8fa;
+  color: #222;
+}
+header {
+  background: #3275a8;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #205070;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0.5rem 1.2rem;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+nav a:hover, nav a.active {
+  background: #50a2ee;
+}
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #0002;
+  padding: 2rem 1.5rem;
+}
+section {
+  margin-bottom: 2.5rem;
+}
+img.responsive {
+  max-width: 100%;
+  border-radius: 9px;
+}
+.button {
+  padding: 0.5rem 1.1rem;
+  background: #3275a8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button:hover {
+  background: #205070;
+}
+input, textarea, select {
+  width: 93%;
+  margin: 0.7em 0 2em 0;
+  padding: 0.55em;
+  border: 1px solid #67aafc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.card {
+  border-radius: 8px;
+  background: #ecf3fa;
+  box-shadow: 0 2px 6px #0001;
+  padding: 1.2rem;
+  margin: 1rem 0;
+}
+@media (max-width: 700px) {
+  main { padding: 0.7rem; }
+  nav { flex-direction: column; }
+}
+  </style>
+  <script>
+/* Navigation SPA */
+document.addEventListener("DOMContentLoaded", function() {
+  // Hash-based Routing
+  function loadPage(page) {
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+    document.getElementById(page).style.display = "block";
+    document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+    document.getElementById("nav-"+page).classList.add("active");
+    // Special Initialization
+    if(page==="volunteers") showCustomProfile();
+  }
+  const defaultPage = "home";
+  function updatePageFromHash() {
+    const page = location.hash.replace("#","");
+    if (page && document.getElementById(page)) loadPage(page);
+    else loadPage(defaultPage);
+  }
+  window.addEventListener("hashchange", updatePageFromHash);
+  updatePageFromHash();
+});
+
+/* Profile Builder Submission */
+function saveProfile() {
+  const name = document.getElementById('profileName').value;
+  const interests = document.getElementById('profileInterests').value;
+  const bio = document.getElementById('profileBio').value;
+  
+  if (!name || !interests) {
+    alert('Please fill in all required fields.');
+    return false;
+  }
+  localStorage.setItem("volProfileName", name);
+  localStorage.setItem("volProfileInterests", interests);
+  localStorage.setItem("volProfileBio", bio);
+  alert("Profile saved! Go to Volunteers to view your profile.");
+  return false;
+}
+
+/* Display Profile Card (on volunteers page) */
+function showCustomProfile() {
+  if(document.getElementById('customProfileCard')){
+    document.getElementById('customProfileCard').remove();
+  }
+  const name = localStorage.getItem("volProfileName");
+  if (name) {
+    const interests = localStorage.getItem("volProfileInterests");
+    const bio = localStorage.getItem("volProfileBio");
+    const container = document.getElementById("customProfileHere");
+    const card = document.createElement('div');
+    card.className = "card";
+    card.id = "customProfileCard";
+    card.innerHTML = `<h3>${name} (You)</h3>
+    <p><strong>Interests:</strong> ${interests}</p>
+    <p>${bio}</p>
+    <img src="https://source.unsplash.com/featured/?volunteer,portrait" class="responsive" style="max-height:160px;">`;
+    container.prepend(card);
+  }
+}
+
+/* Interactive Campaign Tracker (on tracker page) */
+function addCampaign() {
+  const camp = document.getElementById('campaignTitle').value;
+  const prog = document.getElementById('campaignProgress').value;
+  if (!camp) return alert("Enter a campaign name!");
+  const tracker = document.getElementById('myCampaigns');
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${camp}</td>
+    <td><progress value="${prog}" max="100"></progress> ${prog}%</td>
+    <td><button onclick="this.closest('tr').remove();" class="button" style="background:#d12a40;">Remove</button></td>`;
+  tracker.appendChild(tr);
+  document.getElementById('campaignTitle').value = '';
+  document.getElementById('campaignProgress').value = 0;
+}
+
+/* Simple Feedback Handler */
+function submitFeedback() {
+  alert("Thank you for your feedback!");
+  document.getElementById('feedbackForm').reset();
+  return false;
+}
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Volunteer Showcase Platform</h1>
+    <p>Celebrating community spirits and empowering changemakers!</p>
+  </header>
+  <nav>
+    <a id="nav-home" href="#home" class="active">Home</a>
+    <a id="nav-volunteers" href="#volunteers">Volunteers</a>
+    <a id="nav-campaigns" href="#campaigns">Campaigns</a>
+    <a id="nav-build-profile" href="#build-profile">Build Profile</a>
+    <a id="nav-tracker" href="#tracker">Campaign Tracker</a>
+    <a id="nav-feedback" href="#feedback">Feedback</a>
+  </nav>
+  <main>
+
+    <!-- Home Page -->
+    <section id="home" class="page" style="display:block;">
+      <h2>Welcome to Our Volunteer Network</h2>
+      <p>
+        Join our thriving community of passionate volunteers and discover impactful campaigns. Browse inspiring profiles, showcase your own journey, track campaign progress, and take action for causes that matter!
+      </p>
+      <img class="responsive" src="https://source.unsplash.com/900x320/?community,volunteering,event" alt="Community Volunteers">
+      <ul>
+        <li>Explore <strong>volunteer profiles</strong> to meet amazing changemakers</li>
+        <li>Engage in current <strong>campaigns and events</strong></li>
+        <li><strong>Build your profile</strong> and become a featured volunteer</li>
+        <li><strong>Track</strong> your impact and share your journey</li>
+      </ul>
+    </section>
+
+    <!-- Volunteers Page -->
+    <section id="volunteers" class="page" style="display:none;">
+      <h2>Featured Volunteers</h2>
+      <div id="customProfileHere"></div>
+      <div class="card">
+        <h3>Ravi Sharma</h3>
+        <p><strong>Interests:</strong> Environmental campaigns, Teach for All</p>
+        <p>Ravi actively leads coastal cleanup events and loves mentoring young students through local NGOs.</p>
+        <img class="responsive" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Volunteer Ravi">
+      </div>
+      <div class="card">
+        <h3>Ananya Pillai</h3>
+        <p><strong>Interests:</strong> Literacy drives, Women empowerment</p>
+        <p>Ananya organizes reading camps and workshops for women, helping create a more inclusive society.</p>
+        <img class="responsive" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Volunteer Ananya">
+      </div>
+      <div class="card">
+        <h3>Samuel Thomas</h3>
+        <p><strong>Interests:</strong> Healthcare initiatives</p>
+        <p>Samuel is a paramedic volunteering for rural health checkups and first-aid training sessions.</p>
+        <img class="responsive" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Volunteer Samuel">
+      </div>
+      <p>
+        <em>Want to see your profile here? <a href="#build-profile">Create your own!</a></em>
+      </p>
+    </section>
+
+    <!-- Campaigns Page -->
+    <section id="campaigns" class="page" style="display:none;">
+      <h2>Active Campaigns & Events</h2>
+      <div class="card">
+        <h3>Clean Rivers Drive</h3>
+        <img class="responsive" src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80" alt="River Cleaning">
+        <p>
+          Volunteers are rallying to restore rivers and eliminate plastic waste in the <strong>Yamuna and Cauvery</strong> stretches. 
+        </p>
+        <strong>Date:</strong> Nov 15, 2025 <br>
+        <strong>Contact:</strong> eco-care@change.org
+      </div>
+      <div class="card">
+        <h3>Winter Blanket Collection</h3>
+        <img class="responsive" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=600&q=80" alt="Blanket Collection">
+        <p>
+          We are accepting donations of blankets and woolens for families in need. Drop locations across the city.
+        </p>
+        <strong>Date:</strong> Dec 1-10, 2025 <br>
+        <strong>Contact:</strong> help@warmth.org
+      </div>
+      <div class="card">
+        <h3>Village Health Camp</h3>
+        <img class="responsive" src="https://images.unsplash.com/photo-1576765975142-4b8b2746b6c5?auto=format&fit=crop&w=600&q=80" alt="Village Health">
+        <p>
+          Medical volunteers and doctors are hosting free checkup camps for villagers in Uttarakhand.
+        </p>
+        <strong>Date:</strong> Nov 29, 2025 <br>
+        <strong>Contact:</strong> samuel@ruralhealth.in
+      </div>
+    </section>
+
+    <!-- Build Profile Page -->
+    <section id="build-profile" class="page" style="display:none;">
+      <h2>Build Your Volunteer Profile</h2>
+      <form onsubmit="return saveProfile()">
+        <label>
+          <strong>Name*</strong>:<br>
+          <input type="text" id="profileName" required>
+        </label>
+        <label>
+          <strong>Interests*</strong> (comma separated):<br>
+          <input type="text" id="profileInterests" required placeholder="e.g., Education, Cleanliness">
+        </label>
+        <label>
+          <strong>Short Bio</strong>:<br>
+          <textarea id="profileBio" rows="3" placeholder="Tell us a bit about your volunteering passion!"></textarea>
+        </label>
+        <button class="button" type="submit">Save Profile</button>
+      </form>
+      <img class="responsive" src="https://source.unsplash.com/400x200/?volunteer,team" alt="Volunteering">
+    </section>
+
+    <!-- Tracker Page -->
+    <section id="tracker" class="page" style="display:none;">
+      <h2>My Campaign Contributions Tracker</h2>
+      <form onsubmit="addCampaign();return false;" style="margin-bottom:2rem;">
+        <input type="text" id="campaignTitle" placeholder="Campaign Name" required>
+        <input type="number" id="campaignProgress" min="0" max="100" value="0" required> %
+        <button class="button" type="submit">Add Campaign</button>
+      </form>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#e6f2ff;">
+            <th align="left">Campaign</th>
+            <th align="left">Progress</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="myCampaigns">
+          <!-- User campaigns go here -->
+        </tbody>
+      </table>
+      <img class="responsive" src="https://source.unsplash.com/400x160/?event,volunteer,progress" alt="Tracking Impact">
+    </section>
+
+    <!-- Feedback Page -->
+    <section id="feedback" class="page" style="display:none;">
+      <h2>Send Us Your Feedback!</h2>
+      <form id="feedbackForm" onsubmit="submitFeedback();return false;">
+        <label>
+          <strong>Your Name:</strong><br>
+          <input type="text" placeholder="Optional">
+        </label>
+        <label>
+          <strong>Your Feedback:</strong><br>
+          <textarea rows="3" required></textarea>
+        </label>
+        <button class="button" type="submit">Submit Feedback</button>
+      </form>
+      <img class="responsive" src="https://source.unsplash.com/400x160/?feedback,smile,success" alt="Feedback">
+    </section>
+  </main>
+  <footer style="text-align:center; padding:1.5rem 0; background:#205070; color:#fff;">
+    © 2025 Volunteer Showcase Platform &middot; Built with compassion 🌱
+  </footer>
+</body>
+</html>

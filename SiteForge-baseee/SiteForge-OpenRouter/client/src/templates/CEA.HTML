@@ -1,0 +1,200 @@
+Clean Energy Awareness
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clean Energy Awareness Campaign</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f6faf7; color: #265c3a; }
+    nav { background: #2d8c5a; padding: 0.5em; display: flex; flex-wrap: wrap; justify-content: center; }
+    nav a { color: #fff; text-decoration: none; padding: 1em 1.5em; margin: 0.2em; border-radius: 3px; transition: background 0.3s; }
+    nav a:hover, nav a.active { background: #235e3d; }
+    section { display: none; padding: 2em 1em 1.5em 1em; max-width: 900px; margin: auto; }
+    section.active { display: block; animation: fadeIn 0.3s; }
+    header { text-align: center; padding: 2em 1em 1em 1em; background: #e5f5ed; }
+    header img { width: 100%; max-width: 400px; margin-top: 1em; border-radius: 14px; }
+    h1 { font-weight: 700; }
+    ul { list-style: square; margin-left: 1.5em; }
+    .fact-list li { margin-bottom: 0.8em; }
+    .tips-list li { margin-bottom: 0.8em; }
+    .gallery { display: flex; flex-wrap: wrap; gap: 1em; justify-content: center;}
+    .gallery img { width: 220px; height: 140px; object-fit: cover; border-radius: 8px; border: 2px solid #c2e3cf;}
+    .calculator { max-width: 320px; margin:auto; background: #e5f5ed; padding: 1.5em 1em; border-radius: 10px; }
+    .calculator label { display: block; margin: 0.7em 0 0.2em 0; font-size: 1.1em; }
+    .calculator input { width: 96%; padding: 0.5em; font-size: 1em; border-radius: 5px; border: 1px solid #b2d9be; }
+    .calculator button { margin-top: 1em; background: #2d8c5a; color: #fff; border: none; padding: 0.6em 1.5em; border-radius: 5px; cursor:pointer; font-size: 1.1em; }
+    .calculator button:hover { background: #235e3d;}
+    .result { margin-top: 1em; font-weight: 600; }
+    .contact-form { max-width: 380px; margin: auto; background: #e5f5ed; padding: 1.5em 1em; border-radius: 10px; }
+    .contact-form label { display: block; margin: 0.7em 0 0.2em 0;}
+    .contact-form input, .contact-form textarea { width: 96%; padding: 0.5em; font-size: 1em; border-radius: 5px; border: 1px solid #b2d9be; }
+    .contact-form textarea { min-height: 70px; }
+    .contact-form button { margin-top: 1em; background: #2d8c5a; color: #fff; border: none; padding: 0.7em 2em; border-radius: 5px; cursor:pointer; font-size: 1.1em; }
+    .contact-form button:hover { background: #235e3d;}
+    footer { text-align: center; font-size: 0.95em; background: #d2e9db; padding: 1.2em 0; margin-top: 2em;}
+    @media (max-width: 700px){
+      .gallery { flex-direction: column; align-items: center; }
+      header img { max-width: 95vw; }
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" data-page="home" class="active">Home</a>
+    <a href="#" data-page="facts">Energy Facts</a>
+    <a href="#" data-page="adoption">Adoption Tips</a>
+    <a href="#" data-page="calculator">Calculator</a>
+    <a href="#" data-page="gallery">Gallery</a>
+    <a href="#" data-page="contact">Contact</a>
+  </nav>
+
+  <section id="home" class="active">
+    <header>
+      <h1>Clean Energy for a Sustainable Future</h1>
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Wind Turbines">
+    </header>
+    <p>
+      Welcome to the Clean Energy Awareness Campaign! Learn how renewable energy can power our world while protecting the planet. <br>
+    </p>
+    <ul>
+      <li>Discover key clean energy facts</li>
+      <li>Explore easy adoption tips for your home or business</li>
+      <li>Try our interactive energy savings calculator</li>
+      <li>Browse inspiring renewable energy images</li>
+      <li>Get in touch to get involved!</li>
+    </ul>
+  </section>
+
+  <section id="facts">
+    <header>
+      <h1>Clean Energy Facts</h1>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Solar Panels">
+    </header>
+    <ul class="fact-list">
+      <li>Renewable energy creates five times more jobs than fossil fuels.<br><small>Source: Inspire Clean Energy</small></li>
+      <li>Wind turbines can provide electricity for up to 1,500 homes every year.<br><small>Source: Inspire Clean Energy</small></li>
+      <li>Switching to 100% renewable energy could save billions in annual energy costs.<br><small>Source: Inspire Clean Energy</small></li>
+      <li>Companies like Tesla, Google, and Walmart are leading green energy adoption.</li>
+      <li>Solar, wind, hydro, and geothermal are the most common renewable sources.</li>
+    </ul>
+  </section>
+
+  <section id="adoption">
+    <header>
+      <h1>Adopting Clean Energy</h1>
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80" alt="Rooftop Solar">
+    </header>
+    <ul class="tips-list">
+      <li>Install solar panels or join a local community solar program.</li>
+      <li>Switch to a green energy provider if available in your area.</li>
+      <li>Enhance energy efficiency: use LED lights, smart thermostats, and energy-efficient appliances.</li>
+      <li>Promote public transportation, biking, or electric vehicles to reduce reliance on fossil fuels.</li>
+      <li>Spread awareness! Educate friends and neighbors about clean energy benefits.</li>
+    </ul>
+  </section>
+
+  <section id="calculator">
+    <header>
+      <h1>Energy Savings Calculator</h1>
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Calculator and Lightbulb">
+    </header>
+    <div class="calculator">
+      <form id="energyCalc" onsubmit="event.preventDefault(); calcSavings();">
+        <label for="consumption">Your Monthly Electricity Usage (kWh):</label>
+        <input type="number" id="consumption" required min="1" step="1" placeholder="e.g., 350">
+        <label for="rate">Current Energy Rate (per kWh):</label>
+        <input type="number" id="rate" required min="0.01" step="0.01" placeholder="e.g., 0.12">
+        <label for="renew_rate">Renewable Energy Rate (per kWh):</label>
+        <input type="number" id="renew_rate" required min="0.01" step="0.01" placeholder="e.g., 0.09">
+        <button type="submit">Calculate Savings</button>
+      </form>
+      <div class="result" id="calcResult"></div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <header>
+      <h1>Clean Energy Gallery</h1>
+      <img src="https://images.unsplash.com/photo-1514474959185-1448b8df64b2?auto=format&fit=crop&w=800&q=80" alt="Nature and Solar">
+    </header>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Wind Farm">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Solar Field">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=400&q=80" alt="Rooftop Solar">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=400&q=80" alt="Solar Roof">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Lightbulb Innovation">
+      <img src="https://images.unsplash.com/photo-1514474959185-1448b8df64b2?auto=format&fit=crop&w=400&q=80" alt="Nature and Solar">
+    </div>
+  </section>
+
+  <section id="contact">
+    <header>
+      <h1>Contact & Get Involved</h1>
+      <img src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&w=800&q=80" alt="Teamwork">
+    </header>
+    <form class="contact-form" onsubmit="event.preventDefault(); submitContact();">
+      <label for="name">Your Name:</label>
+      <input required type="text" id="name" placeholder="Name">
+      <label for="email">Your Email:</label>
+      <input required type="email" id="email" placeholder="Email">
+      <label for="message">Message:</label>
+      <textarea required id="message" placeholder="How would you like to get involved?"></textarea>
+      <button type="submit">Send</button>
+      <div id="contactResult"></div>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Clean Energy Awareness Campaign
+  </footer>
+
+  <script>
+    // Navigation functionality
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        navLinks.forEach(n => n.classList.remove('active'));
+        this.classList.add('active');
+        const page = this.getAttribute('data-page');
+        sections.forEach(s => s.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+        window.scrollTo(0, 0);
+      });
+    });
+
+    // Calculator function
+    function calcSavings() {
+      const usage = +document.getElementById('consumption').value;
+      const rate = +document.getElementById('rate').value;
+      const renew = +document.getElementById('renew_rate').value;
+      const currCost = usage * rate;
+      const renewCost = usage * renew;
+      const savings = currCost - renewCost;
+      let txt = `Current Monthly Cost: ₹${currCost.toFixed(2)}<br>Renewable Cost: ₹${renewCost.toFixed(2)}<br>`;
+      if (savings > 0) txt += `<span style="color:#38ab65;">Monthly Savings: ₹${savings.toFixed(2)}</span>`;
+      else if (savings === 0) txt += `<span>No difference in cost.</span>`;
+      else txt += `<span style="color:#c23232;">Renewable option is currently more expensive by ₹${Math.abs(savings).toFixed(2)}</span>`;
+      document.getElementById('calcResult').innerHTML = txt;
+    }
+
+    // Contact form mock submission
+    function submitContact() {
+      document.getElementById('contactResult').innerHTML = "<span style='color: #38ab65;'>Thank you for reaching out! We'll contact you soon.</span>";
+      setTimeout(()=>{document.getElementById('contactResult').innerHTML = "";},3500);
+      document.querySelector('.contact-form').reset();
+    }
+
+    // Set initial home section (for fallback if loaded directly)
+    window.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('home').classList.add('active');
+    });
+  </script>
+</body>
+</html>
